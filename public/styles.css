@@ -13,6 +13,17 @@
     #004dff 80%,
     #750787 100%
   );
+  --strava: #fc4c02;
+  --strava-tint: rgba(252, 76, 2, 0.32);
+  --ig-gradient: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  --ig-tint: rgba(220, 39, 67, 0.3);
   --radius: 14px;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, 0.18);
@@ -353,6 +364,23 @@ button:focus-visible {
   color: #fff;
 }
 
+/* Brand-color hover overrides — must come after .btn-primary / .btn-ghost
+   so they win on equal-specificity cascade. */
+.btn--ig:hover,
+.btn--ig:focus-visible {
+  background: var(--ig-gradient);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+.btn--strava:hover,
+.btn--strava:focus-visible {
+  background: var(--strava);
+  color: #fff;
+  border-color: var(--strava);
+  box-shadow: var(--shadow-md);
+}
+
 /* ---------- Cards ---------- */
 
 .cards {
@@ -398,6 +426,84 @@ button:focus-visible {
   color: var(--text-muted);
 }
 
+/* ---------- Schedule ---------- */
+
+.schedule {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .schedule {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.event {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.event:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.event-header {
+  background: var(--text);
+  color: #fff;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  position: relative;
+}
+.event-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: var(--pride);
+}
+.event-day {
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.event-time {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.event-body {
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+.event-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+.event h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+}
+.event p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 /* ---------- Join ---------- */
 
 .join-grid {
@@ -432,10 +538,28 @@ button:focus-visible {
   inset: 0 0 auto 0;
   height: 4px;
   background: var(--pride);
+  transition: height 0.2s ease;
 }
 .join-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+.join-card:hover::before {
+  height: 6px;
+}
+
+.join-card--ig::before {
+  background: var(--ig-gradient);
+}
+.join-card--ig:hover {
+  box-shadow: 0 12px 32px -10px var(--ig-tint);
+}
+
+.join-card--strava::before {
+  background: var(--strava);
+}
+.join-card--strava:hover {
+  box-shadow: 0 12px 32px -10px var(--strava-tint);
 }
 .join-eyebrow {
   font-size: 0.8rem;
@@ -458,6 +582,49 @@ button:focus-visible {
   margin-top: auto;
   font-weight: 600;
   font-size: 0.95rem;
+  color: inherit;
+}
+a.join-cta:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Strava widgets ---------- */
+
+.strava-feed {
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.strava-feed-caption {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.strava-feed iframe,
+.strava-summary iframe {
+  border: 0;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.strava-summary {
+  margin: 0.75rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.instagram-logo {
+  margin: 0.75rem 0;
+  display: flex;
+  justify-content: center;
+}
+.instagram-logo svg {
+  width: clamp(120px, 30vw, 160px);
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 /* ---------- Footer ---------- */
