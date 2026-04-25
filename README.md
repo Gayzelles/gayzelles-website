@@ -8,12 +8,12 @@ Everything that gets published lives under `public/`. Anything outside `public/`
 
 ## Local preview
 
-Serve the `public/` folder:
-
 ```bash
-cd public && python3 -m http.server 8000
+./dev
 # then visit http://localhost:8000
 ```
+
+`./dev` just `cd`s into `public/` and runs `python3 -m http.server 8000`. Stop with `Ctrl+C`.
 
 ## Deploy to Netlify
 

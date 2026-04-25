@@ -284,18 +284,76 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .hero-logo {
   width: clamp(180px, 38vw, 280px);
   height: auto;
   margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+.hero-logo.is-leaping {
+  animation: leap 0.85s linear;
+  transform-origin: 50% 100%;
+}
+@keyframes leap {
+  0% {
+    transform: translateY(0) rotate(0);
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  50% {
+    transform: translateY(-60px) rotate(-3deg);
+    animation-timing-function: cubic-bezier(0.55, 0, 0.78, 0.37);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+.confetti {
+  position: absolute;
+  font-size: 1.5rem;
+  pointer-events: none;
+  user-select: none;
+  transition:
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 1s ease-out;
+  will-change: transform, opacity;
+  z-index: 5;
+}
+
+.easter-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: #fff;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  animation: toast-pop 2s ease-out forwards;
+}
+@keyframes toast-pop {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.9); }
+  15%  { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.05); }
+  25%  { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  85%  { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-15px) scale(0.95); }
 }
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1;
-  margin: 0 0 1rem;
+  line-height: 1.15;
+  padding-bottom: 0.08em;
+  margin: 0 0 0.75rem;
   background: var(--pride);
   -webkit-background-clip: text;
   background-clip: text;
@@ -348,7 +406,8 @@ button:focus-visible {
 }
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: var(--pride);
+  background-color: #1a1a1a;
+  background-image: var(--pride);
   background-size: 200% 100%;
   box-shadow: var(--shadow-md);
 }
@@ -368,7 +427,8 @@ button:focus-visible {
    so they win on equal-specificity cascade. */
 .btn--ig:hover,
 .btn--ig:focus-visible {
-  background: var(--ig-gradient);
+  background-color: #1a1a1a;
+  background-image: var(--ig-gradient);
   color: #fff;
   border-color: transparent;
   box-shadow: var(--shadow-md);
@@ -630,9 +690,57 @@ a.join-cta:hover {
 /* ---------- Footer ---------- */
 
 .site-footer {
+  position: relative;
   background: #111;
   color: #f6f5f3;
   padding: 2.5rem 0;
+}
+
+/* Racing gazelles strip — sits in the page area immediately above the
+   footer, so the racers' feet land on the footer's top edge. */
+.race {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 36px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.racer-wrap {
+  position: absolute;
+  bottom: 0;
+  left: -48px;
+  animation: race linear forwards;
+  pointer-events: none;
+  will-change: transform;
+}
+.racer-bob {
+  display: block;
+  width: 28px;
+  height: 28px;
+  animation: bob 0.35s ease-in-out infinite alternate;
+}
+@keyframes race {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100vw + 96px));
+  }
+}
+@keyframes bob {
+  from {
+    transform: translateY(-2px);
+  }
+  to {
+    transform: translateY(2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .race {
+    display: none;
+  }
 }
 .footer-inner {
   display: flex;
@@ -679,5 +787,9 @@ a.join-cta:hover {
   }
   html {
     scroll-behavior: auto;
+  }
+  /* Easter-egg toast still needs to be visible without its pop animation. */
+  .easter-toast {
+    opacity: 1;
   }
 }

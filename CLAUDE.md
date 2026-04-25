@@ -9,10 +9,10 @@ A single-page static brochure site for **Gayzelles**, an LGBT+ 5K running, climb
 ## Common commands
 
 ```bash
-# Local preview — must be served from inside public/, because the HTML uses
-# absolute paths like /styles.css and /assets/logo.png that resolve against
-# the publish root.
-cd public && python3 -m http.server 8000
+# Local preview — runs python3 -m http.server inside public/, because the
+# HTML uses absolute paths like /styles.css and /assets/logo.png that
+# resolve against the publish root.
+./dev
 # then visit http://localhost:8000
 
 # Deploy via Netlify CLI (alternative to Git-linked auto-deploys)
@@ -35,7 +35,9 @@ Layout:
     ├── index.html       # the entire page (header, hero, About, What we do,
     │                    #   When we meet, Join, footer)
     ├── styles.css       # all styling, mobile-first
-    ├── script.js        # mobile hamburger nav toggle (no other JS)
+    ├── script.js        # mobile hamburger nav, footer racing-gazelle
+    │                     #   spawner, and hero-logo easter egg (click →
+    │                     #   leap + confetti + toast). Vanilla JS, no deps.
     ├── robots.txt / sitemap.xml
     └── assets/          # logo + 32px / 180px / 256px / 1024px favicon variants
 ```
