@@ -29,6 +29,7 @@ Layout:
 
 ```
 .
+├── dev                  # one-line shell script for local preview (root only)
 ├── netlify.toml         # publish dir + security/cache headers (root only)
 ├── README.md / CLAUDE.md / .gitignore
 └── public/              # ← only this gets deployed
@@ -56,9 +57,23 @@ Layout:
 - **Sticky header** has `scroll-padding-top: 5rem` on `<html>` to keep anchored sections from being hidden under the header. Update this if header height changes.
 - **Tone**: warm, friendly, inclusive. Emojis are welcome and used (✨ ☺️ 💫 🦌 🏃 🧗 🥾) — this is a deliberate choice for this project, not a default. The general "no emojis in code" instruction does **not** apply to copy in `index.html` here.
 - **Cache headers**: `/assets/*` is served with `max-age=31536000, immutable`. If you replace an asset with a new version, change its filename rather than relying on cache invalidation.
+- **Open Graph / Twitter meta `image` URLs must be absolute** (`https://gayzelles.com/...`), not relative. WhatsApp and iMessage fetch the meta tags server-side and have no notion of the site's domain — relative URLs silently produce imageless previews.
+- **Benign console errors from Strava iframes**: the embedded Strava widgets log `jQuery is not defined` and `Strava.module is not a function` errors that originate inside the iframes (Strava's bug, not ours). Don't chase them.
 
 ## Linkable URLs (real, in production use)
 
 - Strava club: `https://www.strava.com/clubs/gayzelles`
 - Instagram: `https://instagram.com/gayzelles`
+- Facebook: `https://www.facebook.com/profile.php?id=61581252675035`
 - Production domain: `https://gayzelles.com`
+
+## Netlify
+
+The site is Git-linked and auto-deploys on every push to `main`. Builds take ~3s
+(no build step). Project ID: `962beb33-dbd1-4a02-9339-6147721bb9cf`. Useful when
+the local Netlify CLI is linked:
+
+```bash
+netlify status
+netlify api listSiteDeploys --data='{"site_id":"962beb33-dbd1-4a02-9339-6147721bb9cf","per_page":5}'
+```
