@@ -435,6 +435,13 @@ button:focus-visible {
   border-color: transparent;
   box-shadow: var(--shadow-md);
 }
+.btn--heylo:hover,
+.btn--heylo:focus-visible {
+  background: var(--gayzelles-violet);
+  color: #fff;
+  border-color: var(--gayzelles-violet);
+  box-shadow: var(--shadow-md);
+}
 .btn--strava:hover,
 .btn--strava:focus-visible {
   background: var(--strava);
