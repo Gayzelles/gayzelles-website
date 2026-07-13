@@ -1,0 +1,4 @@
+{
+  "copyFiles": [".netlify/state.json"],
+  "colour": "#ec4899"
+}
