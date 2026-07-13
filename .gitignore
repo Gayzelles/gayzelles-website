@@ -4,3 +4,6 @@
 
 # Local Netlify folder
 .netlify
+
+# Impeccable (design skill) local config
+.impeccable/
