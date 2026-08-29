@@ -9,12 +9,12 @@
   --bg-nav: #101C35;
   --font-main: 'Farro';
   --font-content: 'Poppins';
-  --running: #F6C1B2;
-  --climbing: #D7CAB7;
-  --hiking: #E5ECF8;
-  --cycling: #F6EB61; 
-  --paddling: #D0E9C0;
-  --swimming: #AFC0EA;
+  --running: #a4a4a4;
+  --climbing: #a4a4a4;
+  --cycling: #F6EB61;
+  --hiking: #a4a4a4;
+  --paddling: #a4a4a4;
+  --swimming: #a4a4a4;
 
   --gayzelles-gradient: linear-gradient(
     180deg,
@@ -68,22 +68,29 @@ header.navigation {
   height: 100px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   padding-left: 20px;
 }
-
+div.logo-container {
+  background-color: white;
+  height: 100%;
+  width: 60px;
+  margin-left: -30px;
+  transform: skew(0.02turn, 360deg);
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
 a.header-brand {
-  font-size: 50px;
+  font-size: 40px;
   color: var(--text);
   text-decoration: none;
 }
 
-img.logo {
-  background-color: var(--text);
-  border-radius: 50%;
+img.logo { 
   width: 50px;
   height: 50px;
-  padding: 4px;
+  transform: skew(0.98turn, 360deg);
 }
 
 nav {
@@ -142,7 +149,7 @@ nav li a:after {
 nav li a:hover:after{ height: 0px; }
 nav li:first-child  a:after { background: var(--running);  }
 nav li:nth-child(2) a:after { background: var(--climbing); }
-nav li:nth-child(3) a:after { background: var(--hiking);  }
-nav li:nth-child(4) a:after { background: var(--cycling); }
+nav li:nth-child(3) a:after { background: var(--hiking);   }
+nav li:nth-child(4) a:after { background: var(--cycling);  }
 nav li:nth-child(5) a:after { background: var(--paddling); }
 nav li:nth-child(6) a:after { background: var(--swimming); }
