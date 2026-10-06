@@ -88,6 +88,7 @@ header.navigation {
   align-items: center;
   gap: 30px;
   padding-left: 20px;
+  width: calc(100% - 20px);
 }
 div.logo-container {
   background-color: var(--sub-text);
@@ -285,7 +286,20 @@ span.sport-name.swimming { text-shadow: var(--swimming) 1px 2px; }
   }
   header.navigation nav {
     display: none;
+    /* float: left;
+    position: fixed;
+    bottom: 0;
+    left: -15px;
+    height: 20px;
+    z-index: 1;
+    width: 100%; */
   }
+  /* header.navigation nav ul {
+      justify-content: center;
+  }
+  header.navigation nav ul li {
+    width: 17%;
+  } */
 
   .hero h1 { font-size: 40px; margin: 50px 0; }
   .hero h2 { font-size: 15px; }
