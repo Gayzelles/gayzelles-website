@@ -1,7 +1,7 @@
 :root {
   --text: #ffffff;
   --sub-text: hsl(147, 43%, 92%);
-
+  --bright-bg: #7BE5A9;
   --bg-main: linear-gradient(
     0deg,
     #37527D 0%,
@@ -212,7 +212,8 @@ h1, h2, h3 {
   text-decoration: none;
 }
 .cta a:hover {
-  background: var(--sub-text);
+  background: var(--bright-bg);
+  border-color: var(--bright-bg);
   border-radius: 90px;
   color: var(--bg-nav);
 }
@@ -222,6 +223,15 @@ h2, h3 {
   font-weight: normal;
   letter-spacing: 1px;
 }
+.award-box {
+  margin: 20px auto;
+  width: 200px;
+  height: 200px;
+}
+img.award {
+  display: block;
+  width: 200px; 
+}
 
 .committee-box {
   display: flex;
@@ -229,15 +239,17 @@ h2, h3 {
   gap: 30px;
   padding: 30px;
 }
+
 .committee-box li {
   color: var(--sub-text);
   list-style: square;
 }
 
-.constitution {
+.constitution, .poster {
   text-align: center;
+  margin-bottom: 30px;
 }
-.constitution a {
+.constitution a, .poster a {
   color: var(--sub-text);
 }
 
@@ -279,6 +291,11 @@ span.sport-name.swimming { text-shadow: var(--swimming) 1px 2px; }
   opacity: 80%;
 }
 
+footer {
+  padding: 30px;
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     /* Styles for screens up to 768px width */
   header.navigation {
@@ -314,4 +331,127 @@ span.sport-name.swimming { text-shadow: var(--swimming) 1px 2px; }
     text-align: center;
     font-size: 15px;
   }
+}
+
+/* award box sparkles */
+svg#one {
+	position: absolute;
+	-webkit-transform: translate(20%, 0%);
+	transform: translate(20%, 0%);
+}
+svg#two {
+	position: absolute;
+	-webkit-transform: translate(55%, 285%);
+	transform: translate(55%, 285%);
+}
+svg#three {
+	position: absolute;
+	-webkit-transform: translate(160%, 190%);
+	transform: translate(160%, 190%);
+}
+.group {
+    -webkit-transform: translate(42.5px,42.5px);
+    -moz-transform: translate(42.5px,42.5px);
+    transform: translate(42.5px, 42.5px);
+}
+path {
+    -webkit-transform: translate(-42.50px,-42.50px);
+    -moz-transform: translate(-42.50px,-42.50px);
+    transform: translate(-42.50px,-42.50px);
+}
+.large {
+	-webkit-animation: large 2.5s infinite;
+	-moz-animation: large 2.5s infinite;
+}
+.large-2 {
+	-webkit-animation: large-2 2.5s infinite;
+	-moz-animation: large-2 2.5s infinite;
+}
+.small {
+	-webkit-animation: small 2.5s infinite;
+	-moz-animation: small 2.5s infinite;
+}
+@-webkit-keyframes large {
+	0% {
+		opacity: 0;
+		-webkit-transform: rotate(0deg) scale(0);
+		transform: rotate(0deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: rotate(360deg) scale(1.5);
+		transform: rotate(360deg) scale(1.5);
+	}
+}
+@-moz-keyframes large {
+	0% {
+		opacity: 0;
+		transform: rotate(0deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: rotate(360deg) scale(1.5);
+	}
+}
+@-webkit-keyframes large-2 {
+	0% {
+		opacity: 0;
+		-webkit-transform: rotate(45deg) scale(0);
+		transform: rotate(45deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: rotate(405deg) scale(1.1);
+		transform: rotate(405deg) scale(1.1);
+	}
+}
+@-moz-keyframes large-2 {
+	0% {
+		opacity: 0;
+		transform: rotate(45deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: rotate(405deg) scale(1.1);
+	}
+}
+@-webkit-keyframes small {
+	0% {
+		opacity: 0;
+		-webkit-transform: rotate(0deg) scale(0);
+		transform: rotate(0deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: rotate(-360deg) scale(1);
+		transform: rotate(-360deg) scale(1.5);
+	}
+}
+@-moz-keyframes small {
+	0% {
+		opacity: 0;
+		transform: rotate(0deg) scale(0);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: rotate(-360deg) scale(1.5);
+	}
 }
